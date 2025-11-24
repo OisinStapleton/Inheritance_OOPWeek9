@@ -1,6 +1,5 @@
 package ie.atu;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ public class BankAccountTest {
     }
 
     @Test
-    void contructorInitialisation()
+    void constructorInitialisation()
     {
         account = new BankAccount("ACC12345", "Michael", 100);
         assertEquals("ACC12345", account.getAccNo());
