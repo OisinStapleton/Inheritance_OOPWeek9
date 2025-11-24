@@ -30,4 +30,11 @@ public class BankAccountTest {
         Exception ex = assertThrows(IllegalArgumentException.class, () ->  new BankAccount("ACC12345","Michael", -100));
         assertEquals("Balance must be greater than 0.", ex.getMessage());
     }
+
+    @Test
+    void addFunds()
+    {
+        assertEquals(200,account.addFunds(100,100));
+    }
+
 }

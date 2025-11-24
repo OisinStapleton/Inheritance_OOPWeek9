@@ -6,8 +6,12 @@ public class BankAccount {
     private String name;
     private double balance;
 
+    private double addFunds;
+
+
 
     public BankAccount(String accNo, String name, double balance) {
+
         if(balance <= 0){
             throw new IllegalArgumentException("Balance must be greater than 0.");
         }
@@ -31,4 +35,12 @@ public class BankAccount {
     public double getBalance() {
         return balance;
     }
+
+    public double addFunds(double balance, double add){
+        addFunds = balance + add;
+        return addFunds;
+    }
+
+
+
 }
