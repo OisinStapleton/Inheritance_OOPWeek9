@@ -9,7 +9,7 @@ public class BankAccount {
 
 
     public BankAccount(String accNo, String name, int balance) {
-        if(balance <= 0)
+        if (balance <= 0)
             throw new IllegalArgumentException("Balance must be greater than 0.");
         this.accNo = accNo;
         this.name = name;
@@ -17,9 +17,8 @@ public class BankAccount {
     }
 
     public BankAccount() {
-
     }
-    // comment added because commit is not working.
+
     public String getAccNo() {
         return accNo;
     }
@@ -28,7 +27,7 @@ public class BankAccount {
         return name;
     }
 
-    public double getBalance() {
+    public int getBalance() {
         return balance;
     }
 
@@ -36,9 +35,7 @@ public class BankAccount {
         this.accNo = accNo;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) {this.name = name;}
 
     public void setBalance(int balance) {
         this.balance = balance;
@@ -46,7 +43,20 @@ public class BankAccount {
 
 
     public void deposit(int amount) {
+        if (amount <= 0)
+            throw new IllegalArgumentException("Amount must be greater than 0.");
+
         balance += amount;
+    }
+
+    public void withdraw(int amount) {
+        if (amount <= 0)
+            throw new IllegalArgumentException("Withdraw amount must be greater than 0.");
+
+        if (amount > balance)
+            throw new  IllegalArgumentException("Insufficient funds.");
+
+        balance -= amount;
     }
 }
 

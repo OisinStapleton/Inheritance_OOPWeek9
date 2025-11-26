@@ -11,11 +11,11 @@ public class BankAccountTest {
 
     @BeforeEach
     void setup() {
-        account = new BankAccount();
+        account = new BankAccount("ACC123456", "Donald", 100 );
     }
 
     @Test
-    void contructorInitialisation() {
+    void constructorInitialisation() {
         account = new BankAccount("ACC123456", "Donald", 100);
         assertEquals("ACC123456", account.getAccNo());
         assertEquals("Donald", account.getName());
@@ -33,5 +33,31 @@ public class BankAccountTest {
         double currentFunds = account.getBalance();
         account.deposit(600);
         assertEquals(currentFunds + 600, account.getBalance());
+    }
+
+
+    @Test
+    void depositNegativeAmount() {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> account.deposit(-100));
+        assertEquals("Amount must be greater than 0.", ex.getMessage());
+    }
+
+    @Test
+    void withdrawPositiveAmount() {
+        double currentFunds = account.getBalance();
+        account.withdraw(100);
+        assertEquals(currentFunds - 100, account.getBalance());
+    }
+
+    @Test
+    void withdrawNegativeAmount() {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> account.withdraw(-300));
+        assertEquals("Withdraw amount must be greater than 0.", ex.getMessage());
+    }
+    @Test
+    void withdrawTooMuch() {
+        int currentFunds = account.getBalance();
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> account.withdraw(currentFunds+1));
+        assertEquals("Insufficient funds.", ex.getMessage());
     }
 }
