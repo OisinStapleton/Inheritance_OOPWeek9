@@ -1,13 +1,14 @@
 package ie.atu;
 
+
 public class BankAccount {
 
     private String accNo;
     private String name;
-    private double balance;
+    int balance;
 
 
-    public BankAccount(String accNo, String name, double balance) {
+    public BankAccount(String accNo, String name, int balance) {
         if(balance <= 0)
             throw new IllegalArgumentException("Balance must be greater than 0.");
         this.accNo = accNo;
@@ -30,4 +31,22 @@ public class BankAccount {
     public double getBalance() {
         return balance;
     }
+
+    public void setAccNo(String accNo) {
+        this.accNo = accNo;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+
+    public void deposit(int amount) {
+        balance += amount;
+    }
 }
+
